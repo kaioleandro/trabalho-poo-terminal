@@ -15,9 +15,14 @@ public class CommandPwd extends Command{
                 .getCurrentPath()
                 .toString();
 
-        System.out.println(
-                path.substring(path.indexOf("/home/user"))
-        );
+        int index = path.indexOf("/home/user");
+
+        if (index == -1) {
+            System.out.println(path);
+            return;
+        }
+
+        System.out.println(path.substring(index));
     }
 }
 
