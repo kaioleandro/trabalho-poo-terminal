@@ -1,9 +1,8 @@
 package main.command;
 
+import main.FileSystemUtils;
 import main.PathManager;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class CommandRm extends Command {
@@ -26,15 +25,6 @@ public class CommandRm extends Command {
                 .getCurrentPath()
                 .resolve(args[1]);
 
-        try {
-            if (!Files.exists(filePath)) {
-                System.out.println("Arquivo ou diretório não encontrado");
-                return;
-            }
-
-            Files.delete(filePath);
-        } catch (IOException e) {
-            System.out.println("Erro ao remover - O diretório não está vazio");
-        }
+        FileSystemUtils.DeleteFilesAndDiretories(filePath);
     }
 }
