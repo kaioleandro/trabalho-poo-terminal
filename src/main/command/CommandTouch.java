@@ -1,9 +1,8 @@
 package main.command;
 
+import main.FileManager;
 import main.PathManager;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class CommandTouch extends Command {
@@ -26,15 +25,7 @@ public class CommandTouch extends Command {
                 .getCurrentPath()
                 .resolve(args[1]);
 
-        try {
-            if (Files.exists(filePath)) {
-                System.out.println("Arquivo já existe");
-                return;
-            }
+        FileManager.CreateFile(filePath);
 
-            Files.createFile(filePath);
-        } catch (IOException e) {
-            System.out.println("Erro ao criar arquivo");
-        }
     }
 }
