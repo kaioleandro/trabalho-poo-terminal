@@ -6,6 +6,8 @@ import java.nio.file.Paths;
 
 public class PathManager {
     private static PathManager instance;
+    private final Path rootPath;
+    private final Path fileHistoryPath;
     private Path currentPath;
 
     public static PathManager getInstance() {
@@ -17,7 +19,11 @@ public class PathManager {
     }
 
     private PathManager() {
-        this.currentPath = Paths.get("").toAbsolutePath();
+        Path initialPath = Paths.get("").toAbsolutePath().resolve("home/user");;
+
+        this.fileHistoryPath = initialPath.resolve("terminal_history.txt");
+        this.rootPath = initialPath;
+        this.currentPath = initialPath;
     }
 
     public void changeCurrentPath(String name) {
@@ -34,4 +40,8 @@ public class PathManager {
     public Path getCurrentPath() {
         return currentPath;
     }
+
+    public Path getRootPath() { return rootPath;}
+
+    public Path getFileHistoryPath() { return fileHistoryPath; }
 }
