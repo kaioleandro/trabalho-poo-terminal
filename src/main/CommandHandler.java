@@ -17,6 +17,7 @@ public class CommandHandler {
         mapCommand(new CommandTouch());
         mapCommand(new CommandRm());
         mapCommand(new CommandHistory());
+        mapCommand(new CommandCat());
     }
 
     private void mapCommand(Command command) {
