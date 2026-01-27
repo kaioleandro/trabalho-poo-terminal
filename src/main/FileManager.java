@@ -53,10 +53,10 @@ public class FileManager implements FileSystemUtils {
         }
     }
 
-    public static List< String> readFile() {
+    public static List< String> readFile(Path path) {
         try {
             return Files.readAllLines(
-                    PathManager.getInstance().getFileHistoryPath(),
+                    path,
                     StandardCharsets.UTF_8
             );
 
