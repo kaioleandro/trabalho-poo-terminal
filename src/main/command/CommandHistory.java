@@ -14,7 +14,7 @@ public class CommandHistory extends Command {
     @Override
     public void execute(String[] args) {
        List<String> commands = FileManager.readFile(PathManager.getInstance().getFileHistoryPath());
-       for (int i = 0; i < commands.size(); i++ ){
+       for (int i = 0; i < commands.size() - 1; i++ ){
            System.out.println((i + 1) + " " + commands.get(i));
        }
     }
