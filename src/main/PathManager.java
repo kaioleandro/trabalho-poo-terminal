@@ -10,6 +10,9 @@ public class PathManager {
     private final Path fileHistoryPath;
     private Path currentPath;
 
+    public static final String NAME_ROOT = "home/user";
+    public static final String NAME_HISTORY_FILE = "history.txt";
+
     public static PathManager getInstance() {
         if( instance == null) {
             instance = new PathManager();
@@ -19,9 +22,9 @@ public class PathManager {
     }
 
     private PathManager() {
-        Path initialPath = Paths.get("").toAbsolutePath().resolve("home/user");;
+        Path initialPath = Paths.get("").toAbsolutePath().resolve(NAME_ROOT);;
 
-        this.fileHistoryPath = initialPath.resolve("terminal_history.txt");
+        this.fileHistoryPath = initialPath.resolve(NAME_HISTORY_FILE);
         this.rootPath = initialPath;
         this.currentPath = initialPath;
     }

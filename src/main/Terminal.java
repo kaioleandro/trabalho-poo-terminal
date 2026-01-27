@@ -26,16 +26,16 @@ public class Terminal {
         while (true) {
             try {
                 String path = pathManager.getCurrentPath().toString();
-                int index = path.indexOf("home/user");
+                int index = path.indexOf(PathManager.NAME_ROOT);
 
                 System.out.print(path
-                        .substring(index + "home/user".length())
+                        .substring(index + PathManager.NAME_ROOT.length())
                         .concat("> ")
                 );
 
                 String consoleInput = input.nextLine();
 
-                FileManager.AppendFile(
+                FileManager.appendFile(
                         pathManager.getFileHistoryPath(),
                         consoleInput + System.lineSeparator()
                 );
