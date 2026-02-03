@@ -27,8 +27,8 @@ public class CommandCd extends Command{
 Comando: cd
 Descrição: Navega entre diretórios.
 Uso:
-    cd <diretório> -> acessa um subdiretório
-    cd ..          -> acessa o diretório pai
+    cd <diretório> → acessa um subdiretório
+    cd ..          → acessa o diretório pai
 """;
     }
 }

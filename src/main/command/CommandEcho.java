@@ -48,8 +48,8 @@ public class CommandEcho extends Command {
 Comando: echo
 Descrição: Escreve texto em um arquivo.
 Uso:
-    echo "texto" > <arquivo>  -> reescreve o arquivo com o texto informado.
-    echo "texto" >> <arquivo> -> adiciona o texto informado no arquivo.
+    echo "texto" > <arquivo>  → reescreve o arquivo com o texto informado.
+    echo "texto" >> <arquivo> → adiciona o texto informado no arquivo.
 """;
     }
 }
