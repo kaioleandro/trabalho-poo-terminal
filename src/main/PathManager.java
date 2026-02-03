@@ -20,9 +20,7 @@ public class PathManager {
     }
 
     private PathManager() {
-        Path initialPath = Paths.get(System.getProperty("user.home")).toAbsolutePath();
-
-        this.currentPath = initialPath;
+        this.currentPath = Paths.get(System.getProperty("user.home")).toAbsolutePath();
 
         Path projectPath = Paths.get("").toAbsolutePath();
         this.fileHistoryPath = projectPath.resolve(NAME_HISTORY_FILE);
