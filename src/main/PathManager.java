@@ -30,7 +30,7 @@ public class PathManager {
         Path newPath = currentPath.resolve(name).normalize();
 
         if (!Files.exists(newPath) || !Files.isDirectory(newPath)) {
-            System.out.println("bash: cd: Arquivo ou diretório inexistente");
+            System.out.println("bash: cd: "+ name +": Arquivo ou diretório inexistente");
             return;
         }
 

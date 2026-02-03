@@ -54,7 +54,8 @@ public class FileManager implements FileSystemUtils {
     public static List< String> readFile(Path path) {
         try {
             if(!Files.exists(path)) {
-                System.out.println("cat: Arquivo ou diretório inexistente");
+                System.out.println("cat: "+ path.getFileName() +": Arquivo ou diretório inexistente");
+
                 return Collections.emptyList();
             }
 

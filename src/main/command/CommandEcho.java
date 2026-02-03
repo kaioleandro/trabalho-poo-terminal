@@ -16,7 +16,7 @@ public class CommandEcho extends Command {
     protected void execute(String[] args, String rawInput) {
 
         if (!rawInput.contains(">")) {
-            System.out.println("Uso: echo texto > arquivo.txt");
+            System.out.println("Uso: echo 'texto' > arquivo.txt");
             return;
         }
 
