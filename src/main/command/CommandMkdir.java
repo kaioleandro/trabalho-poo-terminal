@@ -10,10 +10,13 @@ public class CommandMkdir extends Command {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, String rawInput) {
+        if (args.length > 1 && args[1].equals("--help")) {
+            System.out.println(help());
+            return;
+        }
         if (args.length < 2 || args[1].isBlank()) {
-            System.out.println("=== Uso incorreto de comando existente ===");
-            System.out.println("Uso do comando: mkdir <nome do diretorio>");
+            System.out.println("mkdir: falta operando");
             return;
         }
 
@@ -22,5 +25,14 @@ public class CommandMkdir extends Command {
                 .getCurrentPath()
                 .resolve(args[1])
         );
+    }
+    @Override
+    public String help() {
+        return """
+Comando: mkdir
+Descrição: Cria um novo diretório.
+Uso:
+    mkdir <nome_do_diretorio>
+""";
     }
 }

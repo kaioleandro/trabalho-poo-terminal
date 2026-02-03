@@ -15,7 +15,11 @@ public class CommandLs extends Command {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, String rawInput) {
+        if (args.length > 1 && args[1].equals("--help")) {
+            System.out.println(help());
+            return;
+        }
         Path currentPath = PathManager
                 .getInstance()
                 .getCurrentPath();
@@ -27,5 +31,13 @@ public class CommandLs extends Command {
         } catch (IOException e) {
             System.out.println("Erro ao listar diretório");
         }
+    }
+    public String help() {
+        return """
+Comando: ls
+Descrição: Lista os arquivos e diretórios do diretório atual.
+Uso:
+    ls
+""";
     }
 }

@@ -8,13 +8,14 @@ public interface FileSystemUtils {
     static void DeleteFilesAndDiretories(Path path) {
         try {
             if (!Files.exists(path)) {
-                System.out.println("Arquivo ou diretório não encontrado");
+                System.out.println("rm: não foi possível remover '"+path.getFileName()+"': Arquivo ou diretório inexistente");
                 return;
             }
 
             Files.delete(path);
         } catch (IOException e) {
-            System.out.println("Erro ao remover - O diretório não está vazio");
+            System.out.println("rm: não foi possível remover '"+path.getFileName()+"/': Diretório não está vazio");
+            // usando uma frase fictícia para satisfazer o enunciado do professor, onde rm também apaga diretórios desde que estejam vazios.
         }
     }
 }

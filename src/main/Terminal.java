@@ -12,7 +12,6 @@ public class Terminal {
     private static void start() {
         PathManager pathManager = PathManager.getInstance();
 
-        DirectoryManager.createDirectory(pathManager.getRootPath());
         FileManager.CreateFile(pathManager.getFileHistoryPath());
 
         consoleListener();
@@ -25,13 +24,7 @@ public class Terminal {
 
         while (true) {
             try {
-                String path = pathManager.getCurrentPath().toString();
-                int index = path.indexOf(PathManager.NAME_ROOT);
-
-                System.out.print(path
-                        .substring(index + PathManager.NAME_ROOT.length())
-                        .concat("> ")
-                );
+                System.out.print(pathManager.getCurrentPath() + "> ");
 
                 String consoleInput = input.nextLine();
 

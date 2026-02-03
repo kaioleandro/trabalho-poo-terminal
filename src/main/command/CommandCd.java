@@ -9,13 +9,26 @@ public class CommandCd extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, String rawInput) {
+        if (args.length > 1 && args[1].equals("--help")) {
+            System.out.println(help());
+            return;
+        }
         if (args.length < 2 || args[1].isBlank()) {
-            System.out.println("=== Uso incorreto de comando existente ===");
-            System.out.println("Uso do comando: cd <nome de diretorio existente>");
+            System.out.println("cd: falta operando");
+            System.out.println("Tente 'cd --help' para mais informações.");
             return;
         }
 
         PathManager.getInstance().changeCurrentPath(args[1]);
+    }
+    public String help() {
+        return """
+Comando: cd
+Descrição: Navega entre diretórios.
+Uso:
+    cd <diretório> → acessa um subdiretório
+    cd ..          → acessa o diretório pai
+""";
     }
 }

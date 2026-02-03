@@ -13,10 +13,13 @@ public class CommandRm extends Command {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, String rawInput) {
+        if (args.length > 1 && args[1].equals("--help")) {
+            System.out.println(help());
+            return;
+        }
         if (args.length < 2 || args[1].isBlank()) {
-            System.out.println("=== Uso incorreto de comando existente ===");
-            System.out.println("Uso do comando: rm <arquivo/diretorio>");
+            System.out.println("rm: falta operando");
             return;
         }
 
@@ -26,5 +29,13 @@ public class CommandRm extends Command {
                 .resolve(args[1]);
 
         FileSystemUtils.DeleteFilesAndDiretories(filePath);
+    }
+    public String help() {
+        return """
+Comando: rm
+Descrição: Remove um arquivo ou diretório.
+Uso:
+    rm <arquivo/diretório>
+""";
     }
 }

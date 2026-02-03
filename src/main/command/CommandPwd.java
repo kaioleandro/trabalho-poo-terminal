@@ -9,7 +9,11 @@ public class CommandPwd extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, String rawInput) {
+        if (args.length > 1 && args[1].equals("--help")) {
+            System.out.println(help());
+            return;
+        }
         String path = PathManager
                 .getInstance()
                 .getCurrentPath()
@@ -23,6 +27,14 @@ public class CommandPwd extends Command{
         }
 
         System.out.println(path.substring(index));
+    }
+    public String help() {
+        return """
+Comando: pwd
+Descrição: Exibe o diretório atual.
+Uso:
+    pwd
+""";
     }
 }
 
