@@ -6,45 +6,42 @@ import java.nio.file.Paths;
 
 public class PathManager {
     private static PathManager instance;
-    private final Path rootPath;
+
     private final Path fileHistoryPath;
     private Path currentPath;
 
-    public static final String NAME_ROOT = "home/user";
     public static final String NAME_HISTORY_FILE = "history.txt";
 
     public static PathManager getInstance() {
-        if( instance == null) {
+        if (instance == null) {
             instance = new PathManager();
         }
-
         return instance;
     }
 
     private PathManager() {
-        Path initialPath = Paths.get("").toAbsolutePath().resolve(NAME_ROOT);;
+        Path initialPath = Paths.get(System.getProperty("user.home")).toAbsolutePath();
 
-        this.fileHistoryPath = initialPath.resolve(NAME_HISTORY_FILE);
-        this.rootPath = initialPath;
         this.currentPath = initialPath;
+        this.fileHistoryPath = initialPath.resolve(NAME_HISTORY_FILE);
     }
 
     public void changeCurrentPath(String name) {
-        Path path = currentPath.resolve(name).normalize();
+        Path newPath = currentPath.resolve(name).normalize();
 
-        if(!Files.isDirectory(path)) {
-            System.out.println("Diretório não encontrado");
+        if (!Files.exists(newPath) || !Files.isDirectory(newPath)) {
+            System.out.println("bash: cd: Arquivo ou diretório inexistente");
             return;
         }
 
-        this.currentPath = path;
+        this.currentPath = newPath;
     }
 
     public Path getCurrentPath() {
         return currentPath;
     }
 
-    public Path getRootPath() { return rootPath;}
-
-    public Path getFileHistoryPath() { return fileHistoryPath; }
+    public Path getFileHistoryPath() {
+        return fileHistoryPath;
+    }
 }
