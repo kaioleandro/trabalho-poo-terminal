@@ -18,6 +18,7 @@ public class CommandHandler {
         mapCommand(new CommandRm());
         mapCommand(new CommandHistory());
         mapCommand(new CommandCat());
+        mapCommand(new CommandEcho());
     }
 
     private void mapCommand(Command command) {
@@ -26,15 +27,14 @@ public class CommandHandler {
 
     public void catchCommand(String input) {
         String[] args = input.trim().split("\\s+");
-
         Command command = mappedCommands.get(args[0]);
 
-        if(command == null){
+        if (command == null) {
             System.out.println("Comando inválido");
             return;
         }
 
-        command.execute(args);
+        command.execute(input);
     }
 }
 

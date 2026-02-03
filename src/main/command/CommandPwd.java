@@ -9,7 +9,7 @@ public class CommandPwd extends Command{
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, String rawInput) {
         String path = PathManager
                 .getInstance()
                 .getCurrentPath()

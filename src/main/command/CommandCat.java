@@ -10,7 +10,7 @@ public class CommandCat extends Command {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute(String[] args, String rawInput) {
         if (args.length != 2) {
             System.out.println("=== Uso incorreto de comando existente ===");
             System.out.println("Uso do comando: cat <arquivo>");
