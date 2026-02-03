@@ -20,6 +20,7 @@ public class CommandRm extends Command {
         }
         if (args.length < 2 || args[1].isBlank()) {
             System.out.println("rm: falta operando");
+            System.out.println("Tente 'rm --help' para mais informações.");
             return;
         }
 
