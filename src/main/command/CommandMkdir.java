@@ -17,6 +17,7 @@ public class CommandMkdir extends Command {
         }
         if (args.length < 2 || args[1].isBlank()) {
             System.out.println("mkdir: falta operando");
+            System.out.println("Tente 'mkdir --help' para mais informações.");
             return;
         }
 

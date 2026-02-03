@@ -20,6 +20,7 @@ public class CommandTouch extends Command {
         }
         if (args.length < 2 || args[1].isBlank()) {
             System.out.println("touch: falta o operando arquivo");
+            System.out.println("Tente 'touch --help' para mais informações.");
             return;
         }
 
