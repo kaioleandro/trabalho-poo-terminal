@@ -14,6 +14,10 @@ public class CommandTouch extends Command {
 
     @Override
     public void execute(String[] args, String rawInput) {
+        if (args.length > 1 && args[1].equals("--help")) {
+            System.out.println(help());
+            return;
+        }
         if (args.length < 2 || args[1].isBlank()) {
             System.out.println("touch: falta o operando arquivo");
             return;
@@ -26,5 +30,13 @@ public class CommandTouch extends Command {
 
         FileManager.CreateFile(filePath);
 
+    }
+    public String help() {
+        return """
+Comando: touch
+Descrição: Cria um novo arquivo vazio.
+Uso:
+    touch <arquivo>
+""";
     }
 }

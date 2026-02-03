@@ -14,9 +14,13 @@ public class CommandEcho extends Command {
 
     @Override
     protected void execute(String[] args, String rawInput) {
-
+        if (args.length > 1 && args[1].equals("--help")) {
+            System.out.println(help());
+            return;
+        }
         if (!rawInput.contains(">")) {
-            System.out.println("Uso: echo 'texto' > arquivo.txt");
+            System.out.println("echo: comando incorreto");
+            System.out.println("Tente 'echo --help' para mais informações.");
             return;
         }
 
@@ -38,5 +42,14 @@ public class CommandEcho extends Command {
         } else {
             FileManager.writeFile(filePath, text + System.lineSeparator());
         }
+    }
+    public String help() {
+        return """
+Comando: echo
+Descrição: Escreve texto em um arquivo.
+Uso:
+    echo "texto" > <arquivo>  -> reescreve o arquivo com o texto informado.
+    echo "texto" >> <arquivo> -> adiciona o texto informado no arquivo.
+""";
     }
 }

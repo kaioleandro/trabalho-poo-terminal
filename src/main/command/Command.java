@@ -10,4 +10,5 @@ public abstract class Command {
     }
 
     protected abstract void execute(String[] args, String rawInput);
+    public abstract String help();
 }
