@@ -29,6 +29,12 @@ public class PathManager {
     public void changeCurrentPath(String name) {
         Path newPath = currentPath.resolve(name).normalize();
 
+        if (Files.isRegularFile(newPath)) {
+            System.out.println("bash: cd: "+ name +": Não é um diretório");
+
+            return;
+        }
+
         if (!Files.exists(newPath) || !Files.isDirectory(newPath)) {
             System.out.println("bash: cd: "+ name +": Arquivo ou diretório inexistente");
             return;

@@ -2,6 +2,9 @@ package main.command;
 
 import main.PathManager;
 
+import java.nio.file.Path;
+import java.util.Arrays;
+
 public class CommandCd extends Command{
     @Override
     public String name() {
@@ -20,7 +23,13 @@ public class CommandCd extends Command{
             return;
         }
 
-        PathManager.getInstance().changeCurrentPath(args[1]);
+        String spacedName = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
+
+        if (spacedName.charAt(0) == '\'' && spacedName.charAt(spacedName.length() - 1) == '\'') {
+            PathManager.getInstance().changeCurrentPath(Arrays.stream(rawInput.split("'")).toArray()[1].toString());
+        } else {
+            PathManager.getInstance().changeCurrentPath(args[1]);
+        }
     }
     public String help() {
         return """

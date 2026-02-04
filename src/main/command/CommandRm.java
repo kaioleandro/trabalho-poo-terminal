@@ -1,9 +1,12 @@
 package main.command;
 
+import main.DirectoryManager;
+import main.FileManager;
 import main.FileSystemUtils;
 import main.PathManager;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 
 public class CommandRm extends Command {
 
@@ -24,12 +27,16 @@ public class CommandRm extends Command {
             return;
         }
 
-        Path filePath = PathManager
-                .getInstance()
-                .getCurrentPath()
-                .resolve(args[1]);
+        String spacedName = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 
-        FileSystemUtils.DeleteFilesAndDiretories(filePath);
+        if (spacedName.charAt(0) == '\'' && spacedName.charAt(spacedName.length() - 1) == '\'') {
+            Path filePath = PathManager.getInstance().getCurrentPath().resolve(Arrays.stream(rawInput.split("'")).toArray()[1].toString());
+            FileSystemUtils.DeleteFilesAndDiretories(filePath);
+        } else {
+            for (int i = 1; i < args.length; i++) {
+                FileSystemUtils.DeleteFilesAndDiretories(PathManager.getInstance().getCurrentPath().resolve(args[i]));
+            }
+        }
     }
     public String help() {
         return """

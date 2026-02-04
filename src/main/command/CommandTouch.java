@@ -1,9 +1,11 @@
 package main.command;
 
+import main.DirectoryManager;
 import main.FileManager;
 import main.PathManager;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 
 public class CommandTouch extends Command {
 
@@ -23,13 +25,16 @@ public class CommandTouch extends Command {
             System.out.println("Tente 'touch --help' para mais informações.");
             return;
         }
+        String spacedName = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 
-        Path filePath = PathManager
-                .getInstance()
-                .getCurrentPath()
-                .resolve(args[1]);
-
-        FileManager.CreateFile(filePath);
+        if (spacedName.charAt(0) == '\'' && spacedName.charAt(spacedName.length() - 1) == '\'') {
+            Path filePath = PathManager.getInstance().getCurrentPath().resolve(Arrays.stream(rawInput.split("'")).toArray()[1].toString());
+            FileManager.CreateFile(filePath);
+        } else {
+            for (int i = 1; i < args.length; i++) {
+                DirectoryManager.createDirectory(PathManager.getInstance().getCurrentPath().resolve(args[i]));
+            }
+        }
 
     }
     public String help() {

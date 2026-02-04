@@ -1,7 +1,11 @@
 package main.command;
 
 import main.FileManager;
+import main.FileSystemUtils;
 import main.PathManager;
+
+import java.nio.file.Path;
+import java.util.Arrays;
 
 public class CommandCat extends Command {
     @Override
@@ -15,20 +19,31 @@ public class CommandCat extends Command {
             System.out.println(help());
             return;
         }
-        if (args.length != 2) {
+        if (args.length < 2) {
             System.out.println("cat: falta operando");
             System.out.println("Tente 'cat --help' para mais informações.");
 
             return;
         }
+        String spacedName = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 
-        FileManager.readFile(
-                PathManager
-                        .getInstance()
-                        .getCurrentPath()
-                        .resolve(args[1])
-                )
-                .forEach(System.out::println);
+        if (spacedName.charAt(0) == '\'' && spacedName.charAt(spacedName.length() - 1) == '\'') {
+            FileManager.readFile(
+                            PathManager
+                                    .getInstance()
+                                    .getCurrentPath()
+                                    .resolve(Arrays.stream(rawInput.split("'")).toArray()[1].toString())
+                    )
+                    .forEach(System.out::println);
+        } else {
+            FileManager.readFile(
+                            PathManager
+                                    .getInstance()
+                                    .getCurrentPath()
+                                    .resolve(args[1])
+                    )
+                    .forEach(System.out::println);
+        }
     }
     public String help() {
         return """

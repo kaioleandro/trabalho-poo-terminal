@@ -3,6 +3,9 @@ package main.command;
 import main.DirectoryManager;
 import main.PathManager;
 
+import java.nio.file.Path;
+import java.util.Arrays;
+
 public class CommandMkdir extends Command {
     @Override
     public String name() {
@@ -21,11 +24,15 @@ public class CommandMkdir extends Command {
             return;
         }
 
-        DirectoryManager.createDirectory(PathManager
-                .getInstance()
-                .getCurrentPath()
-                .resolve(args[1])
-        );
+        String spacedName = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
+
+        if (spacedName.charAt(0) == '\'' && spacedName.charAt(spacedName.length() - 1) == '\'') {
+            DirectoryManager.createDirectory(PathManager.getInstance().getCurrentPath().resolve(Arrays.stream(rawInput.split("'")).toArray()[1].toString()));
+        } else {
+            for (int i = 1; i < args.length; i++) {
+                DirectoryManager.createDirectory(PathManager.getInstance().getCurrentPath().resolve(args[i]));
+            }
+        }
     }
     @Override
     public String help() {
