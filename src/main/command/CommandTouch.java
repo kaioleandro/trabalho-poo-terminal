@@ -32,7 +32,7 @@ public class CommandTouch extends Command {
             FileManager.CreateFile(filePath);
         } else {
             for (int i = 1; i < args.length; i++) {
-                DirectoryManager.createDirectory(PathManager.getInstance().getCurrentPath().resolve(args[i]));
+                FileManager.CreateFile(PathManager.getInstance().getCurrentPath().resolve(args[i]));
             }
         }
 
