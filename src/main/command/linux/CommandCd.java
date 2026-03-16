@@ -1,11 +1,11 @@
-package main.command;
+package main.command.linux;
 
 import main.PathManager;
+import main.command.Command;
 
-import java.nio.file.Path;
 import java.util.Arrays;
 
-public class CommandCd extends Command{
+public class CommandCd extends Command {
     @Override
     public String name() {
         return "cd";

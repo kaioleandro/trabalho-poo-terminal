@@ -1,4 +1,6 @@
-package main.command;
+package main.command.linux;
+
+import main.command.Command;
 
 public class CommandHelp extends Command {
     @Override

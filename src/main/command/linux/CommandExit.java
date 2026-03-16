@@ -1,6 +1,8 @@
-package main.command;
+package main.command.linux;
 
-public class CommandExit extends Command{
+import main.command.Command;
+
+public class CommandExit extends Command {
     @Override
     public String name() {
         return "exit";

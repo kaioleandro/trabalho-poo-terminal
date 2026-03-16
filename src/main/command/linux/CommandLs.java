@@ -1,6 +1,7 @@
-package main.command;
+package main.command.linux;
 
 import main.PathManager;
+import main.command.Command;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,10 +1,9 @@
-package main.command;
+package main.command.linux;
 
 import main.FileManager;
-import main.FileSystemUtils;
 import main.PathManager;
+import main.command.Command;
 
-import java.nio.file.Path;
 import java.util.Arrays;
 
 public class CommandCat extends Command {

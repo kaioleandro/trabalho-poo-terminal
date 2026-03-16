@@ -1,7 +1,8 @@
-package main.command;
+package main.command.linux;
 
 import main.FileManager;
 import main.PathManager;
+import main.command.Command;
 
 import java.nio.file.Path;
 

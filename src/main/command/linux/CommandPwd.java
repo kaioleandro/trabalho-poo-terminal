@@ -1,8 +1,9 @@
-package main.command;
+package main.command.linux;
 
 import main.PathManager;
+import main.command.Command;
 
-public class CommandPwd extends Command{
+public class CommandPwd extends Command {
     @Override
     public String name() {
         return "pwd";
