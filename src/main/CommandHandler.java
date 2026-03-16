@@ -1,29 +1,16 @@
 package main;
 
 import main.command.*;
+import main.factory.CommandFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CommandHandler {
-    private final Map<String, Command> mappedCommands = new HashMap<>();
+    private final Map<String, Command> mappedCommands;
 
-    public CommandHandler() {
-        mapCommand(new CommandPwd());
-        mapCommand(new CommandExit());
-        mapCommand(new CommandMkdir());
-        mapCommand(new CommandCd());
-        mapCommand(new CommandLs());
-        mapCommand(new CommandTouch());
-        mapCommand(new CommandRm());
-        mapCommand(new CommandHistory());
-        mapCommand(new CommandCat());
-        mapCommand(new CommandEcho());
-        mapCommand(new CommandHelp());
-    }
-
-    private void mapCommand(Command command) {
-        mappedCommands.put(command.name(), command);
+    public CommandHandler(CommandFactory factory) {
+        this.mappedCommands = factory.createCommands();
     }
 
     public void catchCommand(String input) {

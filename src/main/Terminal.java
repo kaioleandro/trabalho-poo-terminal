@@ -1,5 +1,7 @@
 package main;
 
+import main.factory.LinuxCommandFactory;
+
 import java.util.Scanner;
 
 public class Terminal {
@@ -19,7 +21,7 @@ public class Terminal {
 
     private static void consoleListener() {
         PathManager pathManager = PathManager.getInstance();
-        CommandHandler commandHandler = new CommandHandler();
+        CommandHandler commandHandler = new CommandHandler(new LinuxCommandFactory());
         Scanner input = new Scanner(System.in);
 
         while (true) {
