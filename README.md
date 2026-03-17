@@ -1,9 +1,9 @@
-# Terminal Linux
-Terminal desenvolvido em Java `21`, que simula o comportamento de um shell de sistemas Linux, permitindo a execução de comandos básicos de manipulação de arquivos e navegação no sistema de diretórios por meio de uma interface de linha de comando.
+# Terminal
+Terminal desenvolvido em Java `21`, que simula o comportamento de um shell de sistemas Linux, permitindo a execução de comandos básicos de manipulação de arquivos e navegação no sistema de diretórios por meio de uma interface de linha de comando. Além disso, foi adicionada Abstract Factory como Design Pattern, onde os comandos principais são alterados baseados no sistema operacional rodando o programa.
 
 <div align="center">
 
-### Comandos
+### Comandos - Linux
   
   | Comando | Descrição |
   |--------|-----------|
@@ -18,6 +18,11 @@ Terminal desenvolvido em Java `21`, que simula o comportamento de um shell de si
   | `touch <arquivo>` | Cria um arquivo vazio |
   | `help` | Exibe a lista de comandos disponíveis |
   | `exit` | Encerra o terminal |
+
+  ### Comando - Windows
+  | Comando | Descrição |
+  |--------|-----------|
+  | `dir` | Lista arquivos e diretórios |
 </div>
 
 
@@ -25,7 +30,7 @@ Terminal desenvolvido em Java `21`, que simula o comportamento de um shell de si
 O diagrama UML a seguir ilustra a estrutura do sistema, mostrando a organização das classes e suas interações.
 
 <div align="center">
-  <img width="4928" height="1533" alt="Image" src="https://github.com/user-attachments/assets/c5f887c5-e223-472e-a98b-65deb6bd9baf" />
+  <img width="4928" height="1533" alt="Imagem do diagrama UML do projeto" src="UML.png" />
 </div>
 
 ## Discentes
